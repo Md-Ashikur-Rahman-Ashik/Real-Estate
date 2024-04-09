@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
   const { user, logInUser, googleUser, facebookUser } = useContext(AuthContext);
@@ -18,26 +19,22 @@ const Login = () => {
   const handleGoogleUser = () => {
     googleUser()
       .then(() => toast("Login with Google account successful "))
-      .catch(() => toast("User Already Logged In"));
+      .catch(() => {
+        user && toast("User Already Logged In")
+      });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-
-    logInUser(email, password)
-      .then(() => toast("User Login successful"))
-      .catch(() => {
-        toast("You have entered wrong email or password");
-      });
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    logInUser(data.email, data.password)
+      .then(() => toast("User Login Successful"))
+      .catch(() => toast("User Already Logged In"));
   };
 
   return (
     <div className="hero py-4 md:py-4 lg:py-0 lg:min-h-screen bg-base-200">
       <ToastContainer></ToastContainer>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-4xl font-bold text-orange-800 text-center">
           Please Login
         </h2>
@@ -50,7 +47,7 @@ const Login = () => {
             placeholder="Email"
             className="input input-bordered"
             name="email"
-            required
+            {...register("email", { required: true })}
           />
         </div>
         <div className="form-control">
@@ -64,7 +61,7 @@ const Login = () => {
             placeholder="Password"
             name="password"
             className="input input-bordered"
-            required
+            {...register("password", { required: true })}
           />
         </div>
         <div className="form-control mt-6">
@@ -76,7 +73,10 @@ const Login = () => {
         >
           <FaGoogle /> Login with Google
         </button>
-        <button className="btn w-full mt-4 bg-orange-800 text-white" onClick={handleFacebookUser}>
+        <button
+          className="btn w-full mt-4 bg-orange-800 text-white"
+          onClick={handleFacebookUser}
+        >
           <FaFacebook /> Login with Facebook
         </button>
         <p className="flex gap-1 justify-center mt-4">

@@ -1,22 +1,28 @@
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
+
   const navLinks = (
     <>
       <li>
-        <NavLink className="text-orange-800 font-bold" to="/">Home</NavLink>
+        <NavLink className="text-orange-800 font-bold" to="/">
+          Home
+        </NavLink>
       </li>
       <li>
-        <NavLink className="text-orange-800 font-bold" to="/update-profile">Update Profile</NavLink>
+        <NavLink className="text-orange-800 font-bold" to="/update-profile">
+          Update Profile
+        </NavLink>
       </li>
       <li>
-        <NavLink className="text-orange-800 font-bold" to="/user-profile">User Profile</NavLink>
+        <NavLink className="text-orange-800 font-bold" to="/login">
+          Login
+        </NavLink>
       </li>
       <li>
-        <NavLink className="text-orange-800 font-bold" to="/login">Login</NavLink>
-      </li>
-      <li>
-        <NavLink className="text-orange-800 font-bold" to="/register">Register</NavLink>
+        <NavLink className="text-orange-800 font-bold" to="/register">
+          Register
+        </NavLink>
       </li>
     </>
   );
@@ -48,12 +54,20 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl text-orange-800 font-bold">
+        <Link
+          to="/"
+          className="btn btn-ghost text-xl text-orange-800 font-bold"
+        >
           TerraHarvest Hub
         </Link>
       </div>
       <div className="hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+      </div>
+      <div>
+        <Link className="text-orange-800 font-bold">
+          User Profile
+        </Link>
       </div>
     </div>
   );

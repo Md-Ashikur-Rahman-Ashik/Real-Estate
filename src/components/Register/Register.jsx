@@ -3,36 +3,38 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useForm } from "react-hook-form";
 
 const Register = () => {
   const { user, registerUser } = useContext(AuthContext);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {
 
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    console.log(data.photo)
 
-    if (!/^(?=.*?[A-Z])/.test(password)) {
+    if (!/^(?=.*?[A-Z])/.test(data.password)) {
       toast("Your password should at least have one Uppercase letter");
       return;
-    } else if (!/^(?=.*?[a-z])/.test(password)) {
+    } else if (!/^(?=.*?[a-z])/.test(data.password)) {
       toast("Your password should at least have one lowercase letter");
       return;
-    } else if (password.length < 6) {
+    } else if (data.password.length < 6) {
       toast("Your password should have minimum 6 characters");
       return;
     }
 
-    registerUser(email, password)
-      .then((result) => toast("User Registration Successful"))
-      .catch((error) => console.error(error));
+    registerUser(data.email, data.password)
+      .then(() => toast("User Registration Successful"))
+      .catch(() => toast("User Registration Failed"));
   };
+
+  
 
   return (
     <div className="hero py-4 md:py-4 lg:py-0 lg:min-h-screen bg-base-200">
       <ToastContainer></ToastContainer>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-4xl font-bold text-orange-800 text-center">
           Please Register
         </h2>
@@ -45,7 +47,7 @@ const Register = () => {
             placeholder="Name"
             className="input input-bordered"
             name="name"
-            required
+            {...register("name", { required: true })}
           />
         </div>
         <div className="form-control">
@@ -57,7 +59,7 @@ const Register = () => {
             placeholder="Email"
             className="input input-bordered"
             name="email"
-            required
+            {...register("email", { required: true })}
           />
         </div>
         <div className="form-control">
@@ -70,8 +72,8 @@ const Register = () => {
             type="text"
             placeholder="Photo URL"
             className="input input-bordered"
-            name="photoURL"
-            required
+            name="photo"
+            {...register("photo", { required: true })}
           />
         </div>
         <div className="form-control">
@@ -85,7 +87,7 @@ const Register = () => {
             placeholder="Password"
             name="password"
             className="input input-bordered"
-            required
+            {...register("password", { required: true })}
           />
         </div>
         <div className="form-control mt-6">
