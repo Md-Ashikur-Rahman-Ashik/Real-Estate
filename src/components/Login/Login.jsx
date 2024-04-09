@@ -3,9 +3,23 @@ import { FaGoogle } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const { user, logInUser } = useContext(AuthContext);
+  const { user, logInUser, googleUser, facebookUser } = useContext(AuthContext);
+
+  const handleFacebookUser = () => {
+    facebookUser()
+      .then(() => toast("Login with Facebook account successful"))
+      .catch(() => toast("User Already Logged In"));
+  };
+
+  const handleGoogleUser = () => {
+    googleUser()
+      .then(() => toast("Login with Google account successful "))
+      .catch(() => toast("User Already Logged In"));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,12 +28,15 @@ const Login = () => {
     const password = e.target.password.value;
 
     logInUser(email, password)
-      .then((result) => console.log(result.user))
-      .catch((error) => console.error(error));
+      .then(() => toast("User Login successful"))
+      .catch(() => {
+        toast("You have entered wrong email or password");
+      });
   };
 
   return (
     <div className="hero py-4 md:py-4 lg:py-0 lg:min-h-screen bg-base-200">
+      <ToastContainer></ToastContainer>
       <form onSubmit={handleSubmit}>
         <h2 className="text-4xl font-bold text-orange-800 text-center">
           Please Login
@@ -53,10 +70,13 @@ const Login = () => {
         <div className="form-control mt-6">
           <button className="btn bg-orange-800 text-white">Login</button>
         </div>
-        <button className="btn w-full mt-4 bg-orange-800 text-white">
+        <button
+          onClick={handleGoogleUser}
+          className="btn w-full mt-4 bg-orange-800 text-white"
+        >
           <FaGoogle /> Login with Google
         </button>
-        <button className="btn w-full mt-4 bg-orange-800 text-white">
+        <button className="btn w-full mt-4 bg-orange-800 text-white" onClick={handleFacebookUser}>
           <FaFacebook /> Login with Facebook
         </button>
         <p className="flex gap-1 justify-center mt-4">
