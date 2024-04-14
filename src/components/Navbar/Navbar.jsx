@@ -1,6 +1,15 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const { user, signOutUser } = useContext(AuthContext);
+
+  const handleSignOut = () => {
+    signOutUser();
+  };
+
+  // console.log(user);
 
   const navLinks = (
     <>
@@ -28,8 +37,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar justify-center bg-base-100">
-      <div className="lg:navbar-start">
+    <div className="flex justify-around items-center bg-base-100">
+      <div className="">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
@@ -61,13 +70,25 @@ const Navbar = () => {
           TerraHarvest Hub
         </Link>
       </div>
-      <div className="hidden lg:flex">
+      <div className="hidden lg:flex lg:justify-between lg:items-center">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
-      <div>
-        <Link className="text-orange-800 font-bold">
-          User Profile
-        </Link>
+      <div className="w-[5%]">
+        {user ? (
+          <div className="flex gap-2 mb-2 mt-2">
+            <img
+              className="rounded-full cursor-pointer"
+              title={user.displayName}
+              src={user.photoURL}
+              alt=""
+            />
+            <Link className="btn" onClick={handleSignOut}>LogOut</Link>
+          </div>
+        ) : (
+          <Link to="/login" className="btn">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
@@ -8,19 +8,19 @@ import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 
 const Login = () => {
-  const { user, logInUser, googleUser, facebookUser } = useContext(AuthContext);
+  const { user, logInUser, googleUser, githubUser } = useContext(AuthContext);
 
-  const handleFacebookUser = () => {
-    facebookUser()
-      .then(() => toast("Login with Facebook account successful"))
-      .catch(() => toast("User Already Logged In"));
+  const handleGithubUser = () => {
+    githubUser()
+      .then(() => toast("Login with Github account successful"))
+      .catch(() => toast("User Login Failed"));
   };
 
   const handleGoogleUser = () => {
     googleUser()
       .then(() => toast("Login with Google account successful "))
       .catch(() => {
-        user && toast("User Already Logged In")
+        user && toast("User Login Failed");
       });
   };
 
@@ -28,7 +28,7 @@ const Login = () => {
   const onSubmit = (data) => {
     logInUser(data.email, data.password)
       .then(() => toast("User Login Successful"))
-      .catch(() => toast("User Already Logged In"));
+      .catch(() => toast("User Login Failed"));
   };
 
   return (
@@ -75,9 +75,9 @@ const Login = () => {
         </button>
         <button
           className="btn w-full mt-4 bg-orange-800 text-white"
-          onClick={handleFacebookUser}
+          onClick={handleGithubUser}
         >
-          <FaFacebook /> Login with Facebook
+          <FaGithub /> Login with GitHub
         </button>
         <p className="flex gap-1 justify-center mt-4">
           {"Don't have an account? Please"}

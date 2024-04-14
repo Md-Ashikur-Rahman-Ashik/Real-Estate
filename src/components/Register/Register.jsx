@@ -4,14 +4,14 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
   const { user, registerUser } = useContext(AuthContext);
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-
-    console.log(data.photo)
+    // console.log(data.photo);
 
     if (!/^(?=.*?[A-Z])/.test(data.password)) {
       toast("Your password should at least have one Uppercase letter");
@@ -25,11 +25,14 @@ const Register = () => {
     }
 
     registerUser(data.email, data.password)
-      .then(() => toast("User Registration Successful"))
+      .then((result) => {
+        toast("User Registration Successful");
+        updateProfile(result.user, {
+          photoURL: data.photo,
+        });
+      })
       .catch(() => toast("User Registration Failed"));
   };
-
-  
 
   return (
     <div className="hero py-4 md:py-4 lg:py-0 lg:min-h-screen bg-base-200">
