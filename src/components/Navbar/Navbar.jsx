@@ -37,7 +37,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="w-[calc(100vw-10)] flex justify-center gap-32 items-center bg-base-100">
+    <div className="w-[calc(100vw-10)] flex justify-center lg:gap-32 gap-2 items-center bg-base-100">
       <div className="">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -73,7 +73,7 @@ const Navbar = () => {
       <div className="hidden lg:flex lg:justify-between lg:items-center">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
-      <div className="w-[5%]">
+      <div className="w-10 lg:w-[5%]">
         {user ? (
           <div className="flex gap-2 mb-2 mt-2">
             <img
