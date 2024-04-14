@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="footer footer-center p-10 bg-orange-800 text-primary-content">
+    <footer className="footer footer-center p-10 bg-orange-800 text-white">
       <aside>
         <p className="font-bold">
           TerraHarvest Hub <br />
