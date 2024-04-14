@@ -12,6 +12,7 @@ export const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch("estate.json")
       },
       {
         path: "/login",
