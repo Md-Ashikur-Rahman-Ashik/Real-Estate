@@ -1,6 +1,6 @@
 const EstateSection = ({ estate }) => {
   // console.log(estate);
-  const { facilities } = estate;
+  const { facilities, price, area, location } = estate;
 
   return (
     <div className="card card-compact mt-10 mx-10">
@@ -10,6 +10,9 @@ const EstateSection = ({ estate }) => {
       <div className="card-body">
         <h2 className="card-title mx-auto">{estate.estate_title}</h2>
         <p className="text-center">{estate.description}</p>
+        <p className="text-center font-bold">Price : {price}</p>
+        <p className="text-center font-bold">Area : {area}</p>
+        <p className="text-center font-bold">{location}</p>
         <p className="text-center capitalize font-bold p-2 rounded bg-orange-800 text-white">
           {estate.status}
         </p>
