@@ -37,7 +37,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="flex justify-around items-center bg-base-100">
+    <div className="w-[calc(100vw-10)] flex justify-center gap-32 items-center bg-base-100">
       <div className="">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

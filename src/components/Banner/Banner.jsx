@@ -1,6 +1,6 @@
 const Banner = () => {
   return (
-    <div className="carousel w-full rounded">
+    <div className="carousel w-[calc(100vw-10)] rounded mx-10">
       <div id="slide1" className="carousel-item relative w-full">
         <img
           src="https://i.ibb.co/0YTyRpw/first-Banner-Image.jpg"
