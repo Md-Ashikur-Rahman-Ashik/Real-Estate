@@ -33,11 +33,18 @@ const Navbar = () => {
           Register
         </NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink className="text-orange-800 font-bold" to="/blog">
+            Blog
+          </NavLink>
+        </li>
+      )}
     </>
   );
 
   return (
-    <div className="w-[calc(100vw-10)] flex justify-center lg:gap-32 gap-2 items-center bg-base-100">
+    <div className="w-[calc(100vw-10)] flex justify-center lg:gap-20 gap-2 items-center bg-base-100">
       <div className="">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

@@ -6,6 +6,7 @@ import Register from "../components/Register/Register";
 import EstateDetails from "../components/EstateDetails/EstateDetails";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import Blog from "../components/Blog/Blog";
 
 export const routes = createBrowserRouter([
   {
@@ -34,6 +35,14 @@ export const routes = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch("/estate.json"),
+      },
+      {
+        path: "/blog",
+        element: (
+          <PrivateRoute>
+            <Blog></Blog>
+          </PrivateRoute>
+        ),
       },
     ],
   },
