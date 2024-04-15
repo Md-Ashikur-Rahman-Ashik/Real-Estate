@@ -7,6 +7,7 @@ import EstateDetails from "../components/EstateDetails/EstateDetails";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import Blog from "../components/Blog/Blog";
+import UpdateProfile from "../components/UpdateProfile/UpdateProfile";
 
 export const routes = createBrowserRouter([
   {
@@ -41,6 +42,14 @@ export const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Blog></Blog>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/update-profile",
+        element: (
+          <PrivateRoute>
+            <UpdateProfile></UpdateProfile>
           </PrivateRoute>
         ),
       },

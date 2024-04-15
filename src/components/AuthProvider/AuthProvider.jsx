@@ -65,6 +65,7 @@ const AuthProvider = ({ children }) => {
     signOutUser,
     githubUser,
     loading,
+    setUser,
   };
 
   return (

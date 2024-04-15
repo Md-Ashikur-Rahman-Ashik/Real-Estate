@@ -29,16 +29,13 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li>
-        <NavLink className="text-orange-800 font-bold" to="/update-profile">
-          Update Profile
-        </NavLink>
-      </li>
-      <li>
-        <NavLink className="text-orange-800 font-bold" to="/login">
-          Login
-        </NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink className="text-orange-800 font-bold" to="/update-profile">
+            Update Profile
+          </NavLink>
+        </li>
+      )}
       <li>
         <NavLink className="text-orange-800 font-bold" to="/register">
           Register
