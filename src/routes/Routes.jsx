@@ -5,11 +5,13 @@ import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import EstateDetails from "../components/EstateDetails/EstateDetails";
 import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -31,7 +33,7 @@ export const routes = createBrowserRouter([
             <EstateDetails></EstateDetails>
           </PrivateRoute>
         ),
-        loader: () => fetch("/estate.json")
+        loader: () => fetch("/estate.json"),
       },
     ],
   },
