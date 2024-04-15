@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import { updateProfile } from "firebase/auth";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { user, registerUser } = useContext(AuthContext);
@@ -36,6 +37,9 @@ const Register = () => {
 
   return (
     <div className="hero py-4 md:py-4 lg:py-0 lg:min-h-screen bg-base-200">
+      <Helmet>
+        <title>TerraHarvest Hub | Register</title>
+      </Helmet>
       <ToastContainer></ToastContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-4xl font-bold text-orange-800 text-center">

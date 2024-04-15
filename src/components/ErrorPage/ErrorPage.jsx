@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { Helmet } from "react-helmet-async";
 
 const ErrorPage = () => {
   return (
     <>
+      <Helmet>
+        <title>TerraHarvest Hub | Error</title>
+      </Helmet>
       <Navbar></Navbar>
       <div className="min-h-screen flex items-center justify-center bg-gray-900">
         <div className="max-w-lg p-8 bg-white rounded-lg shadow-xl text-center">

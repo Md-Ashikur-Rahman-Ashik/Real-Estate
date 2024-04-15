@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useLoaderData, useParams } from "react-router-dom";
 
 const EstateDetails = () => {
@@ -11,6 +12,9 @@ const EstateDetails = () => {
 
   return (
     <div className="px-10 py-2 mb-4">
+      <Helmet>
+        <title>TerraHarvest Hub | Estate</title>
+      </Helmet>
       <h2 className="text-4xl mb-4 text-center font-bold">
         {desiredId.estate_title}
       </h2>

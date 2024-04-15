@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import BlogPost from "./BlogPost";
 
 const Blog = () => {
@@ -19,12 +20,16 @@ const Blog = () => {
       content:
         "<p>Explore the success story of a ranch that has implemented sustainable practices to improve productivity while preserving the environment.</p><p>The ranch utilized rotational grazing, reforestation efforts, and water conservation techniques to achieve remarkable results.</p>",
     },
-    // Add more blog post data as needed
   ];
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold text-center text-orange-800 mb-8">Welcome to Our Blog!</h1>
+      <Helmet>
+        <title>TerraHarvest Hub | Blog</title>
+      </Helmet>
+      <h1 className="text-4xl font-bold text-center text-orange-800 mb-8">
+        Welcome to Our Blog!
+      </h1>
       {blogPosts.map((post) => (
         <BlogPost
           key={post.id}
