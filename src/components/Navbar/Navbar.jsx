@@ -61,6 +61,25 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navLinks}
+            <div className="w-10 lg:w-[5%]">
+              {user ? (
+                <div className="flex gap-2 mb-2 mt-2">
+                  <img
+                    className="rounded-full cursor-pointer"
+                    title={user.displayName}
+                    src={user.photoURL}
+                    alt=""
+                  />
+                  <Link className="btn" onClick={handleSignOut}>
+                    LogOut
+                  </Link>
+                </div>
+              ) : (
+                <Link to="/login" className="btn mb-2 mt-2">
+                  Login
+                </Link>
+              )}
+            </div>
           </ul>
         </div>
         <Link
@@ -73,7 +92,7 @@ const Navbar = () => {
       <div className="hidden lg:flex lg:justify-between lg:items-center">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
-      <div className="w-10 lg:w-[5%]">
+      <div className="w-10 lg:w-[5%] hidden lg:inline">
         {user ? (
           <div className="flex gap-2 mb-2 mt-2">
             <img
@@ -82,10 +101,12 @@ const Navbar = () => {
               src={user.photoURL}
               alt=""
             />
-            <Link className="btn" onClick={handleSignOut}>LogOut</Link>
+            <Link className="btn" onClick={handleSignOut}>
+              LogOut
+            </Link>
           </div>
         ) : (
-          <Link to="/login" className="btn">
+          <Link to="/login" className="btn mb-2 mt-2">
             Login
           </Link>
         )}

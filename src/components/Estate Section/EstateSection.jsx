@@ -1,18 +1,17 @@
+import { Link } from "react-router-dom";
+
 const EstateSection = ({ estate }) => {
   // console.log(estate);
-  const { facilities, price, area, location } = estate;
+  const { facilities, price, area, location, id, short_description } = estate;
 
   return (
-    <div className="card card-compact mt-10 mx-10">
+    <div className="card card-compact mt-10 mx-10 border py-2">
       <figure>
-        <img src={estate.image} className="w-96 h-80 rounded-xl" alt="Shoes" />
+        <img src={estate.image} className="w-full h-80 rounded-xl" alt="Shoes" />
       </figure>
       <div className="card-body">
         <h2 className="card-title mx-auto">{estate.estate_title}</h2>
-        <p className="text-center">{estate.description}</p>
-        <p className="text-center font-bold">Price : {price}</p>
-        <p className="text-center font-bold">Area : {area}</p>
-        <p className="text-center font-bold">{location}</p>
+        <p className="text-center">{short_description}</p>
         <p className="text-center capitalize font-bold p-2 rounded bg-orange-800 text-white">
           {estate.status}
         </p>
@@ -24,9 +23,11 @@ const EstateSection = ({ estate }) => {
           ))}
         </div>
         <div className="card-actions justify-center ">
-          <button className="btn bg-orange-800 text-white">
-            View Property
-          </button>
+          <Link to={`/estate/${id}`}>
+            <button className="btn bg-orange-800 text-white">
+              View Property
+            </button>
+          </Link>
         </div>
       </div>
     </div>
