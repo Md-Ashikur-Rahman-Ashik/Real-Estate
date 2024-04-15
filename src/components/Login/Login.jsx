@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
+import "animate.css";
 
 const Login = () => {
   const { user, logInUser, googleUser, githubUser } = useContext(AuthContext);
@@ -58,7 +59,7 @@ const Login = () => {
       </Helmet>
       <ToastContainer></ToastContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h2 className="text-4xl font-bold text-orange-800 text-center">
+        <h2 className="text-4xl font-bold animate__animated animate__bounce text-orange-800 text-center">
           Please Login
         </h2>
         <div className="form-control">

@@ -8,6 +8,7 @@ import { updateProfile } from "firebase/auth";
 import { Helmet } from "react-helmet-async";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa";
+import 'animate.css';
 
 const Register = () => {
   const { user, registerUser } = useContext(AuthContext);
@@ -49,7 +50,7 @@ const Register = () => {
       </Helmet>
       <ToastContainer></ToastContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <h2 className="text-4xl font-bold text-orange-800 text-center">
+        <h2 className="text-4xl font-bold text-orange-800 text-center animate__animated animate__bounce">
           Please Register
         </h2>
         <div className="form-control">

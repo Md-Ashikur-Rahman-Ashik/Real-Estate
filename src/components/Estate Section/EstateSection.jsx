@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import 'animate.css';
 
 const EstateSection = ({ estate }) => {
   // console.log(estate);
@@ -11,7 +12,7 @@ const EstateSection = ({ estate }) => {
       </figure>
       <div className="card-body">
         <h2 className="card-title mx-auto">{estate.estate_title}</h2>
-        <p className="text-center">{short_description}</p>
+        <p className="text-center animate__animated animate__bounce__delay-4s">{short_description}</p>
         <p className="text-center capitalize font-bold p-2 rounded bg-orange-800 text-white">
           {estate.status}
         </p>
