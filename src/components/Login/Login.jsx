@@ -6,6 +6,7 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { user, logInUser, googleUser, githubUser } = useContext(AuthContext);
@@ -52,6 +53,9 @@ const Login = () => {
 
   return (
     <div className="hero py-4 md:py-4 lg:py-0 lg:min-h-screen bg-base-200">
+      <Helmet>
+        <title>TerraHarvest Hub | Login</title>
+      </Helmet>
       <ToastContainer></ToastContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h2 className="text-4xl font-bold text-orange-800 text-center">
