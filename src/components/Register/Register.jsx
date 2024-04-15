@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
@@ -6,9 +6,16 @@ import "react-toastify/dist/ReactToastify.css";
 import { useForm } from "react-hook-form";
 import { updateProfile } from "firebase/auth";
 import { Helmet } from "react-helmet-async";
+import { FaEyeSlash } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 
 const Register = () => {
   const { user, registerUser } = useContext(AuthContext);
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => {
+    setShow(!show);
+  };
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -52,7 +59,7 @@ const Register = () => {
           <input
             type="text"
             placeholder="Name"
-            className="input input-bordered"
+            className="py-2 border rounded-xl px-2 input-bordered"
             name="name"
             {...register("name", { required: true })}
           />
@@ -64,7 +71,7 @@ const Register = () => {
           <input
             type="email"
             placeholder="Email"
-            className="input input-bordered"
+            className="py-2 border rounded-xl px-2 input-bordered"
             name="email"
             {...register("email", { required: true })}
           />
@@ -78,7 +85,7 @@ const Register = () => {
           <input
             type="text"
             placeholder="Photo URL"
-            className="input input-bordered"
+            className="py-2 border rounded-xl px-2 input-bordered"
             name="photo"
             {...register("photo", { required: true })}
           />
@@ -89,13 +96,26 @@ const Register = () => {
               Password
             </span>
           </label>
-          <input
-            type="password"
-            placeholder="Password"
-            name="password"
-            className="input input-bordered"
-            {...register("password", { required: true })}
-          />
+          <div className="form-control relative">
+            <input
+              type={show ? "text" : "password"}
+              placeholder="Password"
+              name="password"
+              className="py-2 border rounded-xl px-2 input-bordered"
+              {...register("password", { required: true })}
+            />
+            {show ? (
+              <FaEye
+                onClick={handleShow}
+                className="absolute right-3 top-3"
+              ></FaEye>
+            ) : (
+              <FaEyeSlash
+                onClick={handleShow}
+                className="absolute right-3 top-3"
+              ></FaEyeSlash>
+            )}
+          </div>
         </div>
         <div className="form-control mt-6">
           <button className="btn bg-orange-800 text-white">Register</button>
