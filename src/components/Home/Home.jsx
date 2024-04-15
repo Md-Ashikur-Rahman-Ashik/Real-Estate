@@ -6,8 +6,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>TerraHarvest Hub | Home
-        </title>
+        <title>TerraHarvest Hub | Home</title>
       </Helmet>
       <Banner></Banner>
       <Estate></Estate>
