@@ -6,7 +6,7 @@ const Footer = () => {
           TerraHarvest Hub <br />
           {"Cultivating Nature's Bounty, One Plot at a Time"}
         </p>
-        <p>Copyright © 2024 - All right reserved</p>
+        <p>Copyright © TerraHarvest Hub, 2024 - All right reserved</p>
       </aside>
       <nav>
         <div className="grid grid-flow-col gap-4">
