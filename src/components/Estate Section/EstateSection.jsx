@@ -18,7 +18,7 @@ const EstateSection = ({ estate }) => {
         </p>
         <div className="capitalize font-bold flex gap-2 text-white">
           {facilities.map((facility, idx) => (
-            <p className="bg-orange-800 p-2 rounded" key={idx}>
+            <p className="bg-orange-800 p-2 rounded text-center" key={idx}>
               {facility}
             </p>
           ))}

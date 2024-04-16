@@ -67,6 +67,7 @@ const UpdateProfile = () => {
               <label className="label">
                 <span className="label-text font-bold">Photo URL</span>
               </label>
+              <img src={user.photoURL} className="rounded-xl w-1/2 mx-auto mb-2" alt="" />
               {clicked ? (
                 <input
                   type="text"
